@@ -19,7 +19,11 @@ async function main() {
 
   await hNFT.deployed();
 
-  console.log("Horocope NFT deployed to:", hNFT.address);
+  const myAddress="ETHEREUM-ADDRESS-WHERE-YOU-WANT-TO-MINT";
+  console.log("horoscopeNFT deployed to:", hNFT.address);   
+ 
+  let txn = await hscp.mintNFT(myAddress, 'virgo');
+  await txn.wait();
 }
 
 // We recommend this pattern to be able to use async/await everywhere

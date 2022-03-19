@@ -20,34 +20,34 @@ function mintNFT(address recipient, string memory zodiacSign)
 {
     _tokenIds.increment();
  
-    string memory finalSvg = string(
-        abi.encodePacked(baseSvg, zodiacSign, "</text></svg>")
-    );
+    // string memory finalSvg = string(
+    //     abi.encodePacked(baseSvg, zodiacSign, "</text></svg>")
+    // );
 
-    string memory json = Base64.encode(
-        bytes(
-            string(
-                abi.encodePacked(
-                    '{"name": "',zodiacSign,
-                    // We set the title of our NFT as the generated word.
-                    '", "description": "On-chain Zodiac Sign NFTs", "attributes": [{"trait_type": "Zodiac Sign", "value": "',
-                    zodiacSign,
-                    '"}], "image": "data:image/svg+xml;base64,',
-                    // We add data:image/svg+xml;base64 and then append our base64 encode our svg.
-                    Base64.encode(bytes(finalSvg)),
-                    '"}'
-                )
-            )
-        )
-    );
+    // string memory json = Base64.encode(
+    //     bytes(
+    //         string(
+    //             abi.encodePacked(
+    //                 '{"name": "',zodiacSign,
+    //                 // We set the title of our NFT as the generated word.
+    //                 '", "description": "On-chain Zodiac Sign NFTs", "attributes": [{"trait_type": "Zodiac Sign", "value": "',
+    //                 zodiacSign,
+    //                 '"}], "image": "data:image/svg+xml;base64,',
+    //                 // We add data:image/svg+xml;base64 and then append our base64 encode our svg.
+    //                 Base64.encode(bytes(finalSvg)),
+    //                 '"}'
+    //             )
+    //         )
+    //     )
+    // );
 
-    string memory finalTokenUri = string(
-        abi.encodePacked("data:application/json;base64,", json)
-    );
+    // string memory finalTokenUri = string(
+    //     abi.encodePacked("data:application/json;base64,", json)
+    // );
  
     uint256 newItemId = _tokenIds.current();
     _mint(recipient, newItemId);
-    _setTokenURI(newItemId, finalTokenUri);
+    _setTokenURI(newItemId, "https://jsonkeeper.com/b/EEXM");
  
     return newItemId;
     }
